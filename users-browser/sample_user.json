@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": { "title": "Mademoiselle", "first": "Gianna", "last": "Morel" },
+      "location": {
+        "street": { "number": 6365, "name": "Rue Louis-Garrand" },
+        "city": "Eschlikon",
+        "state": "Valais",
+        "country": "Switzerland",
+        "postcode": 8200,
+        "coordinates": { "latitude": "-61.5642", "longitude": "115.0414" },
+        "timezone": { "offset": "+4:30", "description": "Kabul" }
+      },
+      "email": "gianna.morel@example.com",
+      "login": {
+        "uuid": "5baaae4d-f383-4e92-9178-98e353c2ee6b",
+        "username": "lazymouse577",
+        "password": "jason1",
+        "salt": "oHp6Kiuh",
+        "md5": "1af54cc58902d76d6c23819a52be5aa3",
+        "sha1": "b1055f7394da38043ebeaa99305e1f1afe3d06a0",
+        "sha256": "29b38e86067beddc6f0cf5ad29a703c8d0c7e17125ad2871e81e38361799d7a6"
+      },
+      "dob": { "date": "1996-03-14T10:22:16.027Z", "age": 28 },
+      "registered": { "date": "2007-01-17T01:47:18.913Z", "age": 18 },
+      "phone": "075 894 72 93",
+      "cell": "075 092 38 83",
+      "id": { "name": "AVS", "value": "756.5924.4369.20" },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/31.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/31.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/31.jpg"
+      },
+      "nat": "CH"
+    }
+  ],
+  "info": {
+    "seed": "e3ebf9fa641d915c",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
