@@ -29,9 +29,9 @@ const UserListItem: React.FC<Props> = ({ user, style }) => {
     <div
       style={{
         ...style,
-        width: '100%', // ✅ Ensure it takes full width
-        padding: 10, // ✅ Remove extra padding
-        boxSizing: 'border-box', // ✅ Ensure padding does not increase width
+        width: '100%',
+        padding: 10,
+        boxSizing: 'border-box',
       }}
       onClick={toggleUserDetails}>
       <Paper
@@ -45,8 +45,8 @@ const UserListItem: React.FC<Props> = ({ user, style }) => {
           borderRadius: 2,
           transition: '0.3s ease',
           '&:hover': { backgroundColor: 'rgba(0,0,0,0.05)' },
-          width: '100%', // ✅ Ensures no overflow
-          boxSizing: 'border-box', // ✅ Ensures padding doesn't increase width
+          width: '100%',
+          boxSizing: 'border-box',
         }}>
         {/* Main User Info */}
         <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>

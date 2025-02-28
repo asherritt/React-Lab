@@ -55,7 +55,7 @@ const UserList: React.FC = () => {
           itemCount={users.length}
           overscanCount={5}
           style={{
-            overflowX: 'hidden', // ✅ Force no horizontal scroll
+            overflowX: 'hidden',
           }}>
           {({ index, style }) => (
             <UserListItem user={users[index]} style={style} />

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext } from 'react';
+import { fetchWithAbort } from '../services/fetchAPI';
 
 type User = {
   firstName: string;
@@ -36,6 +37,10 @@ type UserContextType = {
   sortUsers: (order: 'asc' | 'desc') => void;
   selectedUserId: string | null;
   setSelectedUserId: React.Dispatch<React.SetStateAction<string | null>>;
+  addUser: (user: User) => void;
+  testButton1: () => void;
+  testButton2: () => void;
+  testButton3: () => void;
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -46,7 +51,34 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [users, setUsers] = useState<User[]>([]);
-  const [selectedUserId, setSelectedUserId] = useState<string | null>(null); // ✅ Add selected user state
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+
+  const addUser = (user: User) => {
+    setUsers((prevUsers) => [...prevUsers, user]);
+  };
+
+  const testButton1 = async () => {
+    try {
+      const result = await fetchWithAbort(
+        'https://swapi.py4e.com/api/planets/'
+      );
+      result.results.map((result: any[]) => console.log(result));
+    } catch (error: any) {
+      if (error.name === 'AbortError') {
+        console.warn('Fetch request was aborted.');
+      } else {
+        console.error('An error occurred:', error.message);
+      }
+    }
+  };
+
+  const testButton2 = () => {
+    console.log('testButton2');
+  };
+
+  const testButton3 = () => {
+    console.log('testButton3');
+  };
 
   const fetchUsers = async () => {
     try {
@@ -106,6 +138,10 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         sortUsers,
         selectedUserId,
         setSelectedUserId,
+        addUser,
+        testButton1,
+        testButton2,
+        testButton3,
       }}>
       {children}
     </UserContext.Provider>

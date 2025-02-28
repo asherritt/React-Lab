@@ -16,6 +16,8 @@ import {
 import HomePage from './pages/HomePage';
 import UserPage from './pages/UsersPage';
 import { UserProvider } from './context/UserContext';
+import CreateUserPage from './pages/CreateUserPage';
+import TestPage from './pages/TestPage';
 
 const App: React.FC = () => {
   return (
@@ -38,6 +40,20 @@ const App: React.FC = () => {
                 sx={{ textDecoration: 'none' }}>
                 Users
               </Button>
+              <Button
+                component={NavLink}
+                to='/createuser'
+                color='inherit'
+                sx={{ textDecoration: 'none' }}>
+                Create User
+              </Button>
+              <Button
+                component={NavLink}
+                to='/test'
+                color='inherit'
+                sx={{ textDecoration: 'none' }}>
+                Test
+              </Button>
             </Box>
           </Toolbar>
         </AppBar>
@@ -46,6 +62,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/users' element={<UserPage />} />
+            <Route path='/createuser' element={<CreateUserPage />} />
+            <Route path='/test' element={<TestPage />} />
           </Routes>
         </Container>
       </Router>
