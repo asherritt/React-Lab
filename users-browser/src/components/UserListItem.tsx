@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, Avatar, Typography, Box, Collapse } from '@mui/material';
-import { useUserContext } from './UserContext';
+import { useUserContext } from '../context/UserContext';
 
 type Props = {
   user: {
@@ -26,7 +26,14 @@ const UserListItem: React.FC<Props> = ({ user, style }) => {
   };
 
   return (
-    <div style={{ ...style, padding: '8px' }} onClick={toggleUserDetails}>
+    <div
+      style={{
+        ...style,
+        width: '100%', // ✅ Ensure it takes full width
+        padding: 10, // ✅ Remove extra padding
+        boxSizing: 'border-box', // ✅ Ensure padding does not increase width
+      }}
+      onClick={toggleUserDetails}>
       <Paper
         elevation={2}
         sx={{
@@ -34,12 +41,15 @@ const UserListItem: React.FC<Props> = ({ user, style }) => {
           flexDirection: 'column',
           cursor: 'pointer',
           padding: 2,
+          margin: 0,
           borderRadius: 2,
           transition: '0.3s ease',
           '&:hover': { backgroundColor: 'rgba(0,0,0,0.05)' },
+          width: '100%', // ✅ Ensures no overflow
+          boxSizing: 'border-box', // ✅ Ensures padding doesn't increase width
         }}>
         {/* Main User Info */}
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
           <Avatar
             src={user.picture}
             alt={user.firstName}
@@ -53,7 +63,6 @@ const UserListItem: React.FC<Props> = ({ user, style }) => {
           </Box>
         </Box>
 
-        {/* Expanded User Details */}
         <Collapse in={isExpanded} timeout='auto' unmountOnExit>
           <Box sx={{ marginTop: 2 }}>
             <Typography variant='body1'>

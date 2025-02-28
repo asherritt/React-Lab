@@ -1,19 +1,19 @@
 import { Paper } from '@mui/material';
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { useUserContext } from './UserContext';
+import { useUserContext } from '../context/UserContext';
 import { VariableSizeList } from 'react-window';
 import UserListItem from './UserListItem';
 
 const DEFAULT_ITEM_HEIGHT = 90;
-const EXPANDED_ITEM_HEIGHT = 180; // Adjust based on expanded content
+const EXPANDED_ITEM_HEIGHT = 180;
 
 const UserList: React.FC = () => {
   const { users, selectedUserId } = useUserContext();
-  const [listHeight, setListHeight] = useState(window.innerHeight - 120);
+  const [listHeight, setListHeight] = useState(window.innerHeight - 200);
   const listRef = useRef<VariableSizeList>(null);
 
   useEffect(() => {
-    const handleResize = () => setListHeight(window.innerHeight - 120);
+    const handleResize = () => setListHeight(window.innerHeight - 200);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -41,7 +41,8 @@ const UserList: React.FC = () => {
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden',
+        overflowX: 'hidden',
+        overflowY: 'auto',
         padding: 2,
         marginTop: 2,
       }}>
@@ -52,7 +53,10 @@ const UserList: React.FC = () => {
           width='100%'
           itemSize={getItemSize}
           itemCount={users.length}
-          overscanCount={5}>
+          overscanCount={5}
+          style={{
+            overflowX: 'hidden', // ✅ Force no horizontal scroll
+          }}>
           {({ index, style }) => (
             <UserListItem user={users[index]} style={style} />
           )}

@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import { ArrowUpward, ArrowDownward } from '@mui/icons-material';
 import { useState } from 'react';
-import { useUserContext } from './UserContext';
+import { useUserContext } from '../context/UserContext';
 
 const SortSelector = () => {
   const { sortUsers } = useUserContext();

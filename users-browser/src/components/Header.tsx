@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useUserContext } from './UserContext';
+import { useUserContext } from '../context/UserContext';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
@@ -11,7 +11,7 @@ const Header: React.FC<Props> = ({}) => {
   const { fetchUsers, users, sortUsers } = useUserContext();
 
   return (
-    <AppBar position='static'>
+    <AppBar position='static' color='secondary'>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography variant='h6'>User Browser</Typography>
         <Button variant='contained' onClick={fetchUsers}>

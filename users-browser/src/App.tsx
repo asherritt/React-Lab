@@ -1,49 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Header from './Header';
-import { UserProvider } from './UserContext';
-import UserList from './UserList';
 import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from 'react-router-dom';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
   Container,
-  CssBaseline,
-  ThemeProvider,
-  createTheme,
 } from '@mui/material';
+import HomePage from './pages/HomePage';
+import UserPage from './pages/UsersPage';
+import { UserProvider } from './context/UserContext';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#1976d2',
-    },
-    secondary: {
-      main: '#dc004e',
-    },
-  },
-  typography: {
-    fontFamily: 'Arial, sans-serif',
-  },
-});
-
-function App() {
+const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline /> {/* Resets default browser styles for MUI consistency */}
-      <UserProvider>
-        <Container
-          maxWidth='md'
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100vh', // Full viewport height
-            padding: 0, // Remove default padding
-          }}>
-          <Header />
-          <UserList />
+    <UserProvider>
+      <Router>
+        <AppBar position='static'>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', gap: 2 }}>
+              <Button
+                component={NavLink}
+                to='/'
+                color='inherit'
+                sx={{ textDecoration: 'none' }}>
+                Home
+              </Button>
+              <Button
+                component={NavLink}
+                to='/users'
+                color='inherit'
+                sx={{ textDecoration: 'none' }}>
+                Users
+              </Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        <Container sx={{ marginTop: 4 }}>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/users' element={<UserPage />} />
+          </Routes>
         </Container>
-      </UserProvider>
-    </ThemeProvider>
+      </Router>
+    </UserProvider>
   );
-}
+};
 
 export default App;
